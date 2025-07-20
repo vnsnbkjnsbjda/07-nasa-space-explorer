@@ -145,12 +145,14 @@ async function loadImgs() {
 
             // Add content
             const content = `
-                <img src="${image}">
-                <br>
-                <h2>${galleryData[i].title}</h2>
-                <p class="date">${galleryData[i].date}</p>
-                <br>
-                <p>${galleryData[i].explanation}</p>
+                <div id=modal-content>
+                    <img src="${image}">
+                    <br>
+                    <h2>${galleryData[i].title}</h2>
+                    <h4 class="date">[${galleryData[i].date}]</h4>
+                    <br>
+                    <p>${galleryData[i].explanation}</p>
+                </div>
             `;
             parent.insertAdjacentHTML('beforeend', content);
 
@@ -158,12 +160,12 @@ async function loadImgs() {
                 const content = `
                     <a class="vidButton" href=${galleryData[i].url}>Watch Video</a>
                 `
-                parent.insertAdjacentHTML('beforeend', content );
+                document.getElementById('modal-content').insertAdjacentHTML('beforeend', content );
             } else if (noMedia) {
                 const content = `
                     <a class="vidButton">Media Content Missing</a>
                 `
-                parent.insertAdjacentHTML('beforeend', content);
+                document.getElementById('modal-content').insertAdjacentHTML('beforeend', content);
             }
         })
     }
